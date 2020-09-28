@@ -22,9 +22,15 @@ Replaces Stack and Queue.
 - `apply(F function) -> void` applies the function `F(T) -> T` to each value in the deque 
 - `size() -> size_t` returns the number of values in the deque
 
-### `Stack<T>` deprecated
+### `Stack<T>` FILO Sequence
+- `pop() -> T` remove and return the top value
+- `push(T val) -> void` push a value to the top
+- `size() -> size_t` returns the number of values
 
-### `Queue<T>` deprecated
+### `Queue<T>` FIFO Sequence
+- `pop() -> T` remove and return the top value
+- `push(T val) -> void` push a value to the bottom
+- `size() -> size_t` returns the number of values
 
 ### `Map<K, V>` Sequence of Key/Value Pairs
 - `keys() -> Deque<K>`

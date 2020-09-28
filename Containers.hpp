@@ -108,6 +108,7 @@ namespace Sequences {
         Deque<Pair<K, V>> data;
         Map() = default;
         ~Map() = default;
+
         auto keys() -> Deque<K> {
             Deque<K> result;
             for (Pair<K, V> pair : data) {
@@ -142,6 +143,72 @@ namespace Sequences {
         }
         auto end() {
             return data.data.end();
+        }
+    };
+
+    template<typename T>
+    class Stack {
+        std::vector<T> data;
+    public:
+        Stack() = default;
+        template<typename Iter>
+        Stack(Iter begin, Iter end) : data(begin, end) {}
+
+        template<typename UT>
+        void push(UT&& value) {
+            data.push_back(std::forward<UT>(value));
+        }
+
+        auto pop() -> T {
+            assert(!data.empty());
+            auto result {data.back()};
+            data.pop_back();
+            return result;
+        }
+
+        auto size() const {
+            return data.size();
+        }
+
+        auto begin() const {
+            return data.crbegin();
+        }
+
+        auto end() const {
+            return data.crend();
+        }
+    };
+
+    template<typename T>
+    class Queue {
+        std::vector<T> data;
+    public:
+        Queue() = default;
+        template<typename Iter>
+        Queue(Iter begin, Iter end) : data(begin, end) {}
+
+        template<typename UT>
+        void push(UT&& value) {
+            data.insert(data.begin(), std::forward<UT>(value));
+        }
+
+        auto pop() -> T {
+            assert(!data.empty());
+            auto result {data.back()};
+            data.pop_back();
+            return result;
+        }
+
+        auto size() const {
+            return data.size();
+        }
+
+        auto begin() const {
+            return data.crbegin();
+        }
+
+        auto end() const {
+            return data.crend();
         }
     };
 
