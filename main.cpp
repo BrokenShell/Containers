@@ -7,6 +7,7 @@
 int main() {
     using namespace Objects;
     using namespace Sequences;
+    using MonkeyTimer::print;
 
     using Value = int;
     using Object = Monoid<Value>;
@@ -14,67 +15,86 @@ int main() {
     std::vector<Value> list(10);
     std::iota(list.begin(), list.end(), 0);
 
-    MonkeyTimer::print("Deque<Monoid<Integer>>\n");
-    Deque<Monoid<int>> deque(list.begin(), list.end());
+    Map<std::string, int> map;
+    map.add({"Alpha", 1});
+    map.add({"Beta", 2});
+    map.add({"Gamma", 3});
 
-    for (auto _ : deque) {
-        MonkeyTimer::print(deque.pop().get(), ", ");
+    for (const auto& key : map.keys()) {
+        print(key, ", ");
     }
-    MonkeyTimer::print('\n');
-
-    for (auto val : list) {
-        deque.queue(Object(val));
+    print('\n');
+    for (const auto& val : map.values()) {
+        print(val, ", ");
     }
-
-    for (auto _ : deque) {
-        MonkeyTimer::print(deque.pop().get(), ", ");
-    }
-    MonkeyTimer::print('\n');
-
-    for (auto val : list) {
-        deque.stack(Object(val));
+    print('\n');
+    for (const auto& pair : map.pairs()) {
+        print(pair.key, ": ", pair.value, "\n");
     }
 
-    for (auto val : deque) {
-        MonkeyTimer::print(val.get(), ", ");
-    }
-    MonkeyTimer::print('\n');
+    print(map.lookup("Beta"));
 
-    MonkeyTimer::print("Adding 1 to each with apply(lambda)\n");
-    deque.apply([](Object o){ return o.set(o.get() + 1); });
-
-    for (auto val : deque) {
-        MonkeyTimer::print(val.get(), ", ");
-    }
-    MonkeyTimer::print('\n');
-
-    MonkeyTimer::print("Pruning: ",deque.prune(0).get(), '\n');
-    for (auto val : deque) {
-        MonkeyTimer::print(val.get(), ", ");
-    }
-    MonkeyTimer::print('\n');
-
-    MonkeyTimer::print("Planting: 0", '\n');
-    deque.plant(10, Object(0));
-
-    for (auto val : deque) {
-        MonkeyTimer::print(val.get(), ", ");
-    }
-    MonkeyTimer::print('\n');
-
-    MonkeyTimer::print("Shuffling\n");
-    deque.shuffle();
-
-    for (auto val : deque) {
-        MonkeyTimer::print(val.get(), ", ");
-    }
-    MonkeyTimer::print('\n');
-
-    MonkeyTimer::print("Random Draw: ", deque.random().get(), '\n');
-
-    for (auto val : deque) {
-        MonkeyTimer::print(val.get(), ", ");
-    }
-    MonkeyTimer::print('\n');
+//    print("Deque<Monoid<Integer>>\n");
+//    Deque<Monoid<int>> deque(list.begin(), list.end());
+//
+//    for (auto _ : deque) {
+//        print(deque.pop().get(), ", ");
+//    }
+//    print('\n');
+//
+//    for (auto val : list) {
+//        deque.queue(Object(val));
+//    }
+//
+//    for (auto _ : deque) {
+//        print(deque.pop().get(), ", ");
+//    }
+//    print('\n');
+//
+//    for (auto val : list) {
+//        deque.stack(Object(val));
+//    }
+//
+//    for (auto val : deque) {
+//        print(val.get(), ", ");
+//    }
+//    print('\n');
+//
+//    print("Adding 1 to each with apply(lambda)\n");
+//    deque.apply([](Object o){ return o.set(o.get() + 1); });
+//
+//    for (auto val : deque) {
+//        print(val.get(), ", ");
+//    }
+//    print('\n');
+//
+//    print("Pruning: ",deque.prune(0).get(), '\n');
+//    for (auto val : deque) {
+//        print(val.get(), ", ");
+//    }
+//    print('\n');
+//
+//    print("Planting: 0", '\n');
+//    deque.plant(10, Object(0));
+//
+//    for (auto val : deque) {
+//        print(val.get(), ", ");
+//    }
+//    print('\n');
+//
+//    print("Shuffling\n");
+//    deque.shuffle();
+//
+//    for (auto val : deque) {
+//        print(val.get(), ", ");
+//    }
+//    print('\n');
+//
+//    print("Random Draw: ", deque.random().get(), '\n');
+//
+//    for (auto val : deque) {
+//        print(val.get(), ", ");
+//    }
+//    print('\n');
 
 }
