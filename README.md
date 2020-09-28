@@ -26,7 +26,6 @@ Replaces Stack and Queue.
 
 ### `Queue<T>` deprecated
 
-## Work In Progress
 ### `Map<K, V>` Sequence of Key/Value Pairs
 - `keys() -> Deque<K>`
 - `values() -> Deque<V>`
