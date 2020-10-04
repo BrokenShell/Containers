@@ -19,20 +19,23 @@ int main() {
     map.add({"Alpha", 1});
     map.add({"Beta", 2});
     map.add({"Gamma", 3});
-
+    print("\nKeys: ");
     for (const auto& key : map.keys()) {
         print(key, ", ");
     }
-    print('\n');
+    print("\nValues: ");
     for (const auto& val : map.values()) {
         print(val, ", ");
     }
     print('\n');
+    print("\nPairs:\n");
     for (const auto& pair : map.pairs()) {
         print(pair.key, ": ", pair.value, "\n");
     }
-
-    print(map.lookup("Beta"));
+    print("\nLookups:\n");
+    print("Alpha: ", map.lookup("Alpha"), '\n');
+    print("Beta: ", map.lookup("Beta"), '\n');
+    print("Gamma: ", map.lookup("Gamma"), '\n');
 
 //    print("Deque<Monoid<Integer>>\n");
 //    Deque<Monoid<int>> deque(list.begin(), list.end());

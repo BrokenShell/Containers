@@ -10,8 +10,23 @@ namespace Engine {
     thread_local Engine::RNG_Engine Hurricane{RandomDevice()}; // NOLINT(cert-err58-cpp)
 }
 
-template<typename T>
-auto random_below(T number) -> T {
-    std::uniform_int_distribution<T> distribution {0, number-1};
+template<typename Integer>
+auto random_below(Integer number) -> Integer {
+    std::uniform_int_distribution<Integer> distribution {0, number - 1};
     return distribution(Engine::Hurricane);
+}
+
+template<typename Integer>
+auto random_int(Integer lo, Integer hi) -> Integer {
+    std::uniform_int_distribution<Integer> distribution {lo, hi};
+    return distribution(Engine::Hurricane);
+}
+
+template<typename Integer>
+auto random_range(Integer start, Integer stop, Integer step) -> Integer {
+    if (start == stop or step == 0) return start;
+    const auto width{std::abs(start - stop) - 1};
+    const auto pivot{step > 0 ? std::min(start, stop) : std::max(start, stop)};
+    const auto step_size{std::abs(step)};
+    return pivot + step_size * random_below((width + step_size) / step);
 }
