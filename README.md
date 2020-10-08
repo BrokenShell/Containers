@@ -1,34 +1,32 @@
 # Generic Containers
 
-## Objects
-### `Monoid<Integer>` Chainable Object
-- `get() const -> Integer` getter
-- `set(Integer val) -> Monoid<Integer>` chainable setter
-
-### `Monad<Integer>` Pure Chainable Object
-- `get() const -> Integer` getter
-- `set(Integer val) const -> Monad<Integer>` chainable const setter
+## Chainable Objects
+### `Chainable<T>` Chainable Object
+- `id() const -> Chainable<T>`
+- `pop() const -> T`
+- `look() const -> T`
+- `set(T val) -> Chainable<T>`
 
 ## Sequences
-### `Deque<Integer>` Bidirectional Sequence
-- `stack(Integer val) -> void` push a value to the top of the deque
-- `queue(Integer val) -> void` push a value to the bottom of the deque
-- `pop() -> Integer` remove and return the top value of the deque
-- `plant(size_t idx, Integer val) -> void` emplace a value at a specific index
-- `prune(size_t idx) -> Integer` remove and return a value from a specific index
+### `Deque<T>` Bidirectional Sequence
+- `stack(T val) -> void` push a value to the top of the deque
+- `queue(T val) -> void` push a value to the bottom of the deque
+- `pop() -> T` remove and return the top value of the deque
+- `plant(size_t idx, T val) -> void` emplace a value at a specific index
+- `prune(size_t idx) -> T` remove and return a value from a specific index
 - `shuffle() -> void` randomize the deque
-- `random() -> Integer` remove and return a random value from the deque
-- `apply(F function) -> void` applies the function `F(Integer) -> Integer` to each value in the deque 
+- `random() -> T` remove and return a random value from the deque
+- `apply(F function) -> void` applies the function `F(T) -> T` to each value in the deque 
 - `size() -> size_t` returns the number of values in the deque
 
-### `Stack<Integer>` FILO Sequence
-- `pop() -> Integer` remove and return the top value
-- `push(Integer val) -> void` push a value to the top
+### `Stack<T>` FILO Sequence
+- `pop() -> T` remove and return the top value
+- `push(T val) -> void` push a value to the top
 - `size() -> size_t` returns the number of values
 
-### `Queue<Integer>` FIFO Sequence
-- `pop() -> Integer` remove and return the top value
-- `push(Integer val) -> void` push a value to the bottom
+### `Queue<T>` FIFO Sequence
+- `pop() -> T` remove and return the top value
+- `push(T val) -> void` push a value to the bottom
 - `size() -> size_t` returns the number of values
 
 ### `Map<K, V>` Sequence of Key/Value Pairs

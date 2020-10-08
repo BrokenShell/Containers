@@ -8,9 +8,7 @@ int main() {
     using namespace Objects;
     using namespace Sequences;
     using MonkeyTimer::print;
-
     using Value = int;
-    using Object = Monoid<Value>;
 
     std::vector<Value> list(10);
     std::iota(list.begin(), list.end(), 0);
@@ -37,67 +35,67 @@ int main() {
     print("Beta: ", map.lookup("Beta"), '\n');
     print("Gamma: ", map.lookup("Gamma"), '\n');
 
-//    print("Deque<Monoid<Integer>>\n");
-//    Deque<Monoid<int>> deque(list.begin(), list.end());
-//
-//    for (auto _ : deque) {
-//        print(deque.pop().get(), ", ");
-//    }
-//    print('\n');
-//
-//    for (auto val : list) {
-//        deque.queue(Object(val));
-//    }
-//
-//    for (auto _ : deque) {
-//        print(deque.pop().get(), ", ");
-//    }
-//    print('\n');
-//
-//    for (auto val : list) {
-//        deque.stack(Object(val));
-//    }
-//
-//    for (auto val : deque) {
-//        print(val.get(), ", ");
-//    }
-//    print('\n');
-//
-//    print("Adding 1 to each with apply(lambda)\n");
-//    deque.apply([](Object o){ return o.set(o.get() + 1); });
-//
-//    for (auto val : deque) {
-//        print(val.get(), ", ");
-//    }
-//    print('\n');
-//
-//    print("Pruning: ",deque.prune(0).get(), '\n');
-//    for (auto val : deque) {
-//        print(val.get(), ", ");
-//    }
-//    print('\n');
-//
-//    print("Planting: 0", '\n');
-//    deque.plant(10, Object(0));
-//
-//    for (auto val : deque) {
-//        print(val.get(), ", ");
-//    }
-//    print('\n');
-//
-//    print("Shuffling\n");
-//    deque.shuffle();
-//
-//    for (auto val : deque) {
-//        print(val.get(), ", ");
-//    }
-//    print('\n');
-//
-//    print("Random Draw: ", deque.random().get(), '\n');
-//
-//    for (auto val : deque) {
-//        print(val.get(), ", ");
-//    }
-//    print('\n');
+    print("Deque<Chainable<Integer>>\n");
+    Deque<Chainable<int>> deque(list.begin(), list.end());
+
+    for (auto _ : deque) {
+        print(deque.pop().get(), ", ");
+    }
+    print('\n');
+
+    for (auto val : list) {
+        deque.queue(Chainable<Value>(val));
+    }
+
+    for (auto _ : deque) {
+        print(deque.pop().get(), ", ");
+    }
+    print('\n');
+
+    for (auto val : list) {
+        deque.stack(Chainable<Value>(val));
+    }
+
+    for (const auto& val : deque) {
+        print(val.get(), ", ");
+    }
+    print('\n');
+
+    print("Adding 1 to each with apply(lambda)\n");
+    deque.apply([](Chainable<Value> o){ return o.set(o.get() + 1); });
+
+    for (const auto& val : deque) {
+        print(val.get(), ", ");
+    }
+    print('\n');
+
+    print("Pruning: ",deque.prune(0).get(), '\n');
+    for (const auto& val : deque) {
+        print(val.get(), ", ");
+    }
+    print('\n');
+
+    print("Planting: 0", '\n');
+    deque.plant(10, Chainable<Value>(0));
+
+    for (const auto& val : deque) {
+        print(val.get(), ", ");
+    }
+    print('\n');
+
+    print("Shuffling\n");
+    deque.shuffle();
+
+    for (const auto& val : deque) {
+        print(val.get(), ", ");
+    }
+    print('\n');
+
+    print("Random Draw: ", deque.random().get(), '\n');
+
+    for (const auto& val : deque) {
+        print(val.get(), ", ");
+    }
+    print('\n');
 
 }
