@@ -9,7 +9,7 @@
 
 ### `Monad<T>`
 - `get() -> T`
-- `set() -> Monad<T>`
+- `set(T val) -> Monad<T>`
 
 
 ## Sequences
