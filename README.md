@@ -1,4 +1,4 @@
-# Generic Containers
+# Generic Containers in C++
 
 ## Chainable Objects
 ### `Chainable<T>` Chainable Object
@@ -6,6 +6,11 @@
 - `pop() const -> T`
 - `look() const -> T`
 - `set(T val) -> Chainable<T>`
+
+### `Monad<T>`
+- `get() -> T`
+- `set() -> Monad<T>`
+
 
 ## Sequences
 ### `Deque<T>` Bidirectional Sequence
@@ -18,6 +23,16 @@
 - `random() -> T` remove and return a random value from the deque
 - `apply(F function) -> void` applies the function `F(T) -> T` to each value in the deque 
 - `size() -> size_t` returns the number of values in the deque
+
+### `Pair<K, V>`
+- `keys() -> Deque<K>`
+- `values() -> Deque<V>`
+- `pairs() -> Deque<Pair<K, V>>`
+- `lookup(K key) -> V`
+- `remove(K key) -> void` Work in progress
+- `add(Pair<K, V> pair) -> void`
+- `begin() -> Pair<K, V>`
+- `end() -> Pair<K, V>`
 
 ### `Stack<T>` FILO Sequence
 - `pop() -> T` remove and return the top value
